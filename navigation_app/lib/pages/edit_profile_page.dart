@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class EditPage extends StatefulWidget {
-  const EditPage({super.key, required this.username, required this.saveMethod});
-
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({
+    super.key,
+    required this.username,
+    required this.saveMethod,
+  });
   final String username;
   final String saveMethod;
 
   @override
-  State<StatefulWidget> createState() => _EditState();
+  State<StatefulWidget> createState() => _EditProfileState();
 }
 
-class _EditState extends State<EditPage> {
+class _EditProfileState extends State<EditProfilePage> {
+  String _username = "";
   final TextStyle bodyStyle = const TextStyle(
     fontSize: 20,
   );
@@ -27,17 +31,25 @@ class _EditState extends State<EditPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Edit Username: ${widget.username}',
+                'Edit Username',
                 style: bodyStyle,
               ),
+              TextField(
+                decoration: InputDecoration(
+                  label: Text(widget.username),
+                ),
+                onChanged: (text) => setState(() {
+                  _username = text;
+                }),
+              ),
+              Text('keylogger: $_username'),
               Text(
                 'Save Method: ${widget.saveMethod}',
                 style: bodyStyle,
               ),
               TextButton(
-                onPressed: () => context.go('/profile'),
-                child: const Text("Submit"),
-              )
+                  onPressed: () => context.go('/profile/$_username'),
+                  child: const Text("Submit")),
             ],
           ),
         ),

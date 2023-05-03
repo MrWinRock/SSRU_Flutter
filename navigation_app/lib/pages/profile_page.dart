@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-// import 'home_page.dart';
-
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({super.key, required this.username});
+  final String username;
 
   @override
   State<StatefulWidget> createState() => _ProfileStates();
 }
 
 class _ProfileStates extends State<ProfilePage> {
-  final String _username = "Peter_Parker666";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,31 +20,26 @@ class _ProfileStates extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              "Username: MrWinRock",
-              style: TextStyle(fontSize: 24),
-            ),
+            Text("Username: ${widget.username}",
+                style: const TextStyle(fontSize: 24)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                    onPressed: () =>
-                        context.go('/editProfile/$_username?saveMethod=cloud'),
-                    child: const Text("Edit"))
+                    onPressed: () => context.go('/'),
+                    child: const Text("Home")),
+                TextButton(
+                    onPressed: () => context
+                        .go('/editProfile/${widget.username}?saveMethod=cloud'),
+                    child: const Text("Edit")),
               ],
             ),
-            TextButton(
-                onPressed: () => context.go('/'), child: const Text("Home"))
           ],
         ),
       ),
     );
   }
-
-  // void _navigateToHome() {
-  //   Navigator.of(context).push(MaterialPageRoute(
-  //       builder: (context) => const HomePage(
-  //             title: "Home",
-  //           )));
-  // }
 }
+
+
+// Come back at 10:50

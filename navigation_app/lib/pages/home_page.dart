@@ -1,7 +1,9 @@
+// packages
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-// import 'profile_page.dart';
+// pages
+import 'profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -34,15 +36,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go('/profile'),
+        onPressed: () => context.go('/profile/peter_parker'),
         tooltip: 'Increment',
         child: const Icon(Icons.settings),
-      ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  // void _navigateToProfilePage() {
-  //   Navigator.of(context)
-  //       .push(MaterialPageRoute(builder: (context) => const ProfilePage()));
-  // }
+  void _navigateToProfilePage() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const ProfilePage(
+              username: 'Peter_Parker',
+            )));
+  }
 }
