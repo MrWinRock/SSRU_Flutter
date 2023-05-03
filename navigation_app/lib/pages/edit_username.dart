@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class EditPage extends StatefulWidget {
-  const EditPage({super.key, required this.username});
+  const EditPage({super.key, required this.username, required this.saveMethod});
+
   final String username;
+  final String saveMethod;
 
   @override
   State<StatefulWidget> createState() => _EditState();
@@ -23,9 +24,10 @@ class _EditState extends State<EditPage> {
             children: <Widget>[
               Text('Edit Username: ${widget.username}'),
               TextButton(
-              onPressed: () => context.go('/profile'),
-              child: const Text("Submit"),
-            )],
+                onPressed: () => context.go('/profile'),
+                child: const Text("Submit"),
+              )
+            ],
           ),
         ),
       ),
