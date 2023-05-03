@@ -11,7 +11,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfileStates extends State<ProfilePage> {
-  final String _username = "Peter_Parker";
+  final String _username = "Peter_Parker666";
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,16 @@ class _ProfileStates extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("Username: MrWinRock"),
+            const Text(
+              "Username: MrWinRock",
+              style: TextStyle(fontSize: 24),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                    onPressed: () => context.go('/editProfile/$_username'),
+                    onPressed: () =>
+                        context.go('/editProfile/$_username?saveMethod=cloud'),
                     child: const Text("Edit"))
               ],
             ),
